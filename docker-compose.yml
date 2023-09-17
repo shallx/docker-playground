@@ -1,0 +1,13 @@
+version: "3"
+services:
+  node-app:
+    build: . #location to Dockerfile
+    ports:
+      - "3000:3000" #host:container ports
+    volumes:
+      - ./:/app #host:container volumes
+      - /app/node_modules #ignore node_modules binding
+    environment:
+      - PORT=3000
+    # env_file:
+    #   - ./.env

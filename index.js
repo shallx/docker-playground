@@ -4,7 +4,7 @@ const port = process.env.PORT || 4000
 
 app.get('/', (req, res) => {
   res.json({
-    message: 'Hello Mars!'
+    message: 'Hello Mars! How do you do!!'
   })
 })
 
