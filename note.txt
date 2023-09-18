@@ -6,3 +6,6 @@ docker container run -v $(pwd):/app -v /app/node_modules -dp 3000:3000 --name je
 
 3. Executing commands inside our container
 docker exec -it jesata-app /bin/sh
+
+4. using docker-compose to start server
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d
