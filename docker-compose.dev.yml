@@ -1,9 +1,26 @@
 version: "3"
 services:
-  node-app:
+  node-app: # name of the container
+    build:
+      context: .
+      args:
+        - NODE_ENV=development
     volumes:
-      - ./:/app
-      - /app/node_modules
+      - ./:/app # bind mount, syncs the files from the host to the container
+      - /app/node_modules # anonymous volume, prevents the node_modules from being overwritten by the host
+    ports:
+      - "3000:3000"
     environment:
-      - NODE_ENV=development
+      - PORT=3000
     command: npm run dev
+  
+  mongo:
+    image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=password
+    volumes:
+      - mongo-db:/data/db # named volume, persists the data even if the container is removed
+
+volumes:
+  mongo-db:  #required for named volumes

@@ -1,10 +1,16 @@
 version: "3"
 services:
-  node-app:
-    build: . #location to Dockerfile
+  node-app: # name of the container
+    build: . # location of the Dockerfile
     ports:
       - "3000:3000" #host:container ports
     environment:
       - PORT=3000
     # env_file:
     #   - ./.env
+  
+  mongo:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
