@@ -1,13 +1,19 @@
-const express = require('express')
-const app = express()
-const port = process.env.PORT || 4000
+const express = require("express");
+const mongoose = require("mongoose");
+const app = express();
+const port = process.env.PORT || 4000;
 
-app.get('/', (req, res) => {
+mongoose
+  .connect("mongodb://root:password@mongo:27017/express-mongo") // mongo is the name of the container in docker-compose file, it resolves to the IP address of the container
+  .then(() => console.log("MongoDB connected"))
+  .catch((err) => console.log(err));
+
+app.get("/", (req, res) => {
   res.json({
-    message: 'Hello Mars! How do you do!!'
-  })
-})
+    message: "Hello Mars! How do you do!!",
+  });
+});
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+  console.log(`Example app listening on port ${port}`);
+});
