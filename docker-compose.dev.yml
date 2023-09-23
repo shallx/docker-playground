@@ -12,15 +12,13 @@ services:
       - "3000:3000"
     environment:
       - PORT=3000
+      - NODE_ENV=production
+      - MONGO_USER=root
+      - MONGO_PASSWORD=password
+
     command: npm run dev
   
   mongo:
-    image: mongo
     environment:
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=password
-    volumes:
-      - mongo-db:/data/db # named volume, persists the data even if the container is removed
-
-volumes:
-  mongo-db:  #required for named volumes
