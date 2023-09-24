@@ -6,6 +6,8 @@ services:
       - "3000:3000" #host:container ports
     environment:
       - PORT=3000
+    depends_on: 
+      - mongo # starts the mongo container before the node container
     # env_file:
     #   - ./.env
   
