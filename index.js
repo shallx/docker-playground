@@ -11,6 +11,10 @@ const port = process.env.PORT || 4000;
 
 const mongoURL = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/?authSource=admin`;
 
+const postRouter = require("./routes/postRoutes");
+
+app.use("/api/posts", postRouter);
+
 const connectWithRetry = () => {
   mongoose
     .connect(mongoURL, {
