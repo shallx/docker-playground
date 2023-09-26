@@ -13,7 +13,7 @@ const mongoURL = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_
 
 const postRouter = require("./routes/postRoutes");
 
-app.use("/api/posts", postRouter);
+
 
 const connectWithRetry = () => {
   mongoose
@@ -30,11 +30,15 @@ const connectWithRetry = () => {
 
 connectWithRetry();
 
+app.use(express.json());
+
 app.get("/", (req, res) => {
   res.json({
     message: "Hello Mars! How do you do!!",
   });
 });
+
+app.use("/api/posts", postRouter);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);

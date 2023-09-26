@@ -1,1 +1,33 @@
-GET http://0.0.0.0:3000/
+GET {{baseUrl}}
+content-type: application/json
+
+
+### Get all posts
+
+GET {{baseUrl}}/api/posts
+
+
+### Create a post
+POST {{baseUrl}}/api/posts
+content-type: application/json
+
+{
+    "title": "Post title",
+    "body": "Post body"
+}
+
+
+### Get a post
+
+GET {{baseUrl}}/api/posts/6512a5cec3eac6c19e4d9ff2
+
+
+### Update a post
+
+PATCH  {{baseUrl}}/api/posts/6512a5cec3eac6c19e4d9ff2
+content-type: application/json
+
+{
+    "title": "Post title Updated",
+    "body": "Post body"
+}
