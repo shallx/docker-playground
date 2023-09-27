@@ -31,3 +31,5 @@ content-type: application/json
     "title": "Post title Updated",
     "body": "Post body"
 }
+
+DELETE {{{{baseUrl}}}}/api/post/
